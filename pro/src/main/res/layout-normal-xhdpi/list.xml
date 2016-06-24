@@ -193,12 +193,8 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="false"
-        android:layout_gravity="bottom">
+        android:layout_width="wrap_content"
+        android:layout_height="75dp">
 
         <Button
             style="?android:attr/buttonStyle"
@@ -206,21 +202,24 @@
             android:layout_height="75dp"
             android:text="@string/table_button_get_paid"
             android:id="@+id/listBpaid"
-            android:layout_gravity="left" />
+            android:layout_gravity="left"
+            />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="right">
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:id="@+id/listBdelete"
+            android:src="@android:drawable/ic_menu_delete"
+            android:layout_gravity="center_horizontal"
+            android:layout_column="1" />
 
-            <Button
-                style="?android:attr/buttonStyle"
-                android:layout_width="100dp"
-                android:layout_height="75dp"
-                android:text="@string/table_button_lend"
-                android:id="@+id/listBlend" />
-        </LinearLayout>
-
+        <Button
+            style="?android:attr/buttonStyle"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:text="@string/table_button_lend"
+            android:id="@+id/listBlend"
+            android:layout_column="12"
+            android:layout_gravity="right" />
     </LinearLayout>
 </LinearLayout>

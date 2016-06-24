@@ -134,7 +134,7 @@ public class ClientDao extends Client {
      * ELIMINACION DE UNA FILA EN UNA TABLA CORRESPONDIENTE A UN CODIGO *
      */
     public void delete(String id) {
-        String where = DBUtil.TCLI_ID + "='" + id + "'";
+        String where = DBUtil.TCLI_NAME + "='" + id + "'";
         db.delete(DBUtil.TBL_CLI, where, null);
     }
 

@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.civeloo.whoowesme.pro.R;
+import com.civeloo.whoowesme.pro.data.ClientDao;
 import com.civeloo.whoowesme.pro.data.DebtorDao;
 import com.civeloo.whoowesme.pro.logic.Debtor;
 
@@ -30,6 +32,7 @@ public class Search extends Activity {
         setContentView(R.layout.list);
 
         Button bPaid = (Button) findViewById(R.id.listBpaid);
+        ImageButton bDelete = (ImageButton) findViewById(R.id.listBdelete);
         Button bLend = (Button) findViewById(R.id.listBlend);
         TextView tvTitle = (TextView) findViewById(R.id.listTVtitle);
         TableLayout tabla = (TableLayout) findViewById(R.id.listTableLayout);
@@ -75,6 +78,18 @@ public class Search extends Activity {
             @Override
             public void onClick(View arg0) {
                 alert(1);
+            }
+        });
+
+        bDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                DebtorDao debService = new DebtorDao(Search.this);
+                Debtor debtor = new Debtor();
+                debService.delete(null,vName);
+                ClientDao cliService = new ClientDao(Search.this);
+                cliService.delete(vName);
+                exit();
             }
         });
 
@@ -145,10 +160,11 @@ public class Search extends Activity {
 
     public void exit() {
         // En la Activity llamada utilizamos esto para devolver el parametro
-        Intent resultIntent;
-        resultIntent = new Intent();
-        resultIntent.putExtra("result", vName);
-        setResult(Activity.RESULT_OK, resultIntent);
+//        Intent resultIntent;
+//        resultIntent = new Intent();
+//        resultIntent.putExtra("result", vName);
+//        resultIntent.putExtra("result", "");
+//        setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }
 }

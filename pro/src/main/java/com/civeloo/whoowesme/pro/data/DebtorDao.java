@@ -137,10 +137,12 @@ public class DebtorDao extends Debtor {
      * ELIMINACION DE UNA FILA EN UNA TABLA CORRESPONDIENTE A UN CODIGO *
      */
     public void delete(String id, String client) {
-        String where = "(" + DBUtil.TDEB_ID + "='" + id + "'" + " OR "
-                + DBUtil.TDEB_CLIENT + "='" + client + "'"
-                //+ ") and " + DBUtil.TDEB_DATE + "='" + location
-                + ")'";
+        String where = "(";
+        if (id!=null && client!=null){
+            where += DBUtil.TDEB_ID + "='" + id + "' AND " + DBUtil.TDEB_CLIENT + "='" + client;
+        } else
+            where += (id!=null && client==null)? DBUtil.TDEB_ID + "='" + id : DBUtil.TDEB_CLIENT + "='" + client;
+        where += "')";
         db.delete(DBUtil.TBL_DEB, where, null);
     }
 
